@@ -1,0 +1,44 @@
+{
+    "name": "Zigate Plugin",
+    "id": "zigate",
+    "packaging_format": 1,
+    "description": {
+        "en": "Plugin for Zigate",
+        "fr": "Plugin pour Zigate"
+    },
+    "version": "1.0~ynh1",
+    "url": "https://github.com/zigbeefordomoticz",
+    "upstream": {
+        "code": "https://github.com/zigbeefordomoticz/Domoticz-Zigbee"
+    },
+    "license": "free",
+    "maintainer": {
+        "name": "Krakinou"
+    },
+    "requirements": {
+        "yunohost": ">= 4.3.0"
+    },
+    "multi_instance": false,
+    "services": [
+        "nginx"
+    ],
+    "arguments": {
+        "install" : [
+            {
+                "name": "domain",
+                "type": "domain"
+            },
+            {
+                "name": "path",
+                "type": "path",
+                "example": "/example",
+                "default": "/example"
+            },
+            {
+                "name": "is_public",
+                "type": "boolean",
+                "default": false
+            }
+        ]
+    }
+}
