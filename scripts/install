@@ -55,44 +55,6 @@ port=$(ynh_find_port --port=9440)
 ynh_app_setting_set --app=$app --key=port --value=$port
 
 #=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-#ynh_script_progression --message="Installing dependencies..." --time --weight=1
-
-#ynh_install_app_dependencies $pkg_dependencies
-
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-#ynh_script_progression --message="Configuring system user..." --time --weight=1
-
-# Create a system user
-#ynh_system_user_create --username=$app --home_dir="$final_path"
-
-#=================================================
-# DOWNLOAD, CHECK AND UNPACK SOURCE
-#=================================================
-#ynh_script_progression --message="Setting up source files..." --time --weight=1
-
-### `ynh_setup_source` is used to install an app from a zip or tar.gz file,
-### downloaded from an upstream source, like a git repository.
-### `ynh_setup_source` use the file conf/app.src
-
-#ynh_app_setting_set --app=$app --key=final_path --value=$final_path
-# Download, check integrity, uncompress and patch the source from app.src
-#ynh_setup_source --dest_dir="$final_path"
-
-# FIXME: this should be managed by the core in the future
-# Here, as a packager, you may have to tweak the ownerhsip/permissions
-# such that the appropriate users (e.g. maybe www-data) can access
-# files in some cases.
-# But FOR THE LOVE OF GOD, do not allow r/x for "others" on the entire folder -
-# this will be treated as a security issue.
-#chmod 750 "$final_path"
-#chmod -R o-rwx "$final_path"
-#chown -R $app:www-data "$final_path"
-
-#=================================================
 # NGINX CONFIGURATION
 #=================================================
 ynh_script_progression --message="Configuring NGINX web server..." --time --weight=1
